@@ -1,4 +1,4 @@
-/*! marionette-formview - v0.2.2 - 2013-03-11 */
+/*! marionette-formview - v1.0.0 - 2013-06-17 */
 /*global Backbone,define*/
 
 ;(function (root, factory) {
@@ -37,7 +37,7 @@
 
       if (!this.model) this.model = new Backbone.Model();
 
-      this.bindTo(this.model, 'change', this.changeFieldVal,this);
+      this.listenTo(this.model, 'change', this.changeFieldVal,this);
       if (this.data) this.model.set(this.data);
 
       //Attach Events to preexisting elements if we don't have a template
