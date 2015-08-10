@@ -2,14 +2,17 @@
 
 ;(function (root, factory) {
   "use strict";
-  if (typeof define === 'function' && define.amd) {
+  if (typeof exports === "object") {
+    // CommonJS
+    module.exports = factory(require('backbone'), require('backbone.marionette'), require('jquery'), require('underscore'));
+  } else if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['marionette','jquery','underscore'], factory);
+    define(['backbone','marionette','jquery','underscore'], factory);
   } else {
     // Browser globals
-    root.Marionette.FormView = factory(root.Marionette,root.jQuery,root._);
+    root.Marionette.FormView = factory(root.Backbone,root.Marionette,root.jQuery,root._);
   }
-}(this, function (Marionette,$,_) {
+}(this, function (Backbone,Marionette,$,_) {
   "use strict";
 
   /**
